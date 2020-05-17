@@ -9,5 +9,8 @@ module.exports = {
     appleMobileWebAppStatusBarStyle: 'black',
     display: 'standalone',
     orientation: 'portrait',
+    workboxOptions: {
+      skipWaiting: true,
+    },
   },
 };
