@@ -22,16 +22,6 @@ if (process.env.NODE_ENV === 'production') {
     updated() {
       console.log('New content is available; please refresh.');
       alert('NUEVA VERSION INSTALADA \n CIERRRE Y ABRA LA APLICACION');
-
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker
-          .getRegistrations()
-          .then(function (registrations) {
-            for (let registration of registrations) {
-              registration.update();
-            }
-          });
-      }
     },
     offline() {
       console.log(
