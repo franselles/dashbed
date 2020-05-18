@@ -16,7 +16,7 @@
       <div class="control">
         <b-taglist attached>
           <b-tag type="is-dark">version</b-tag>
-          <b-tag type="is-info">0.1.5</b-tag>
+          <b-tag type="is-info">0.1.6</b-tag>
         </b-taglist>
       </div>
     </form>
@@ -56,7 +56,7 @@ export default {
       }).then(response => {
         if (response) {
           console.log('hola');
-          this.$router.push({ name: 'select' });
+          this.$router.push({ name: 'dash' });
         } else {
           console.log('NO EXISTE');
         }

@@ -47,6 +47,8 @@ api.post('/checkcart', filledControl.getStock);
 api.post('/sectors', sectorsControl.postSectors);
 api.get('/sectors', sectorsControl.getSectors);
 api.get('/sector', sectorsControl.getSector);
+api.put('/sector', sectorsControl.putSector);
+api.post('/sector', sectorsControl.postSector);
 
 // Items
 api.get('/items', itemsControl.getItemsCitySector);

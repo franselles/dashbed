@@ -107,6 +107,39 @@ export default {
       }
     },
 
+    async putSector(context, payload) {
+      try {
+        const data = await Vue.axios({
+          method: 'put',
+          url: 'sector',
+          data: payload,
+          params: {
+            id: payload._id,
+          },
+        });
+        if (data.data) {
+          return data.data;
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    },
+
+    async postSector(context, payload) {
+      try {
+        const data = await Vue.axios({
+          method: 'post',
+          url: 'sector',
+          data: payload,
+        });
+        if (data.data) {
+          return data.data;
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    },
+
     async putItems(context, payload) {
       try {
         const data = await Vue.axios({
@@ -206,7 +239,6 @@ export default {
             sectorID: payload.sectorID,
           },
         });
-        console.log(data);
 
         if (data.data) {
           await commit('setSectorActual', data.data);
