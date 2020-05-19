@@ -52,6 +52,29 @@ function getItem(req, res) {
   });
 }
 
+function deleteItems(req, res) {
+  const cityID = req.query.cityID;
+  const sectorID = req.query.sectorID;
+  const beachID = req.query.beachID;
+
+  Items.deleteMany({
+    cityID: cityID,
+    sectorID: sectorID,
+    beachID: beachID,
+  }).exec((err, doc) => {
+    if (err)
+      return res.status(500).send({
+        message: `Error al realizar la petición: ${err}`,
+      });
+    if (!doc)
+      return res.status(404).send({
+        message: 'No existe',
+      });
+
+    res.status(200).send({ message: 'Borrado' });
+  });
+}
+
 function postItems(req, res) {
   // const data = new Sectors();
 
@@ -118,4 +141,5 @@ module.exports = {
   postItems,
   putItem,
   putItems,
+  deleteItems,
 };

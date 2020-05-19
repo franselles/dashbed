@@ -55,6 +55,7 @@ api.get('/items', itemsControl.getItemsCitySector);
 api.get('/item', itemsControl.getItem);
 api.put('/item', itemsControl.putItem);
 api.put('/items', itemsControl.putItems);
+api.delete('/items', itemsControl.deleteItems);
 api.post('/items', itemsControl.postItems);
 
 //  Users check, token and cookie

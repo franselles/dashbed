@@ -30,10 +30,11 @@
         <b-input type="number" v-model="price"></b-input>
       </b-field>
 
-      <b-field label="numero TOTAL de cols EN EL SECTOR">
+      <b-field label="TOTAL cols EN EL SECTOR">
         <b-input type="number" v-model="col"></b-input>
       </b-field>
-      <b-field label="numero TOTAL de rows EN EL SECTOR">
+
+      <b-field label="TOTAL rows EN EL SECTOR">
         <b-input type="number" v-model="row"></b-input>
       </b-field>
       <b-field label="filled">
@@ -68,7 +69,10 @@ export default {
   },
   methods: {
     ...mapActions('worksStore', ['postItems']),
-    createItems() {
+    async createItems() {
+      this.items = [];
+      let step = 8;
+
       for (let c = 1; c <= this.col; c++) {
         for (let r = 1; r <= this.row; r++) {
           let item = {
@@ -95,10 +99,16 @@ export default {
           };
           this.items.push(item);
         }
+
+        if (c == step) {
+          await this.postItems(this.items);
+          this.items = [];
+          step += 8;
+          this.$buefy.notification.open(step);
+        }
       }
-      this.postItems(this.items).then(() => {
-        this.$buefy.notification.open('CREADO');
-      });
+      await this.postItems(this.items);
+      this.$buefy.notification.open('COMPLETADO');
     },
   },
 };

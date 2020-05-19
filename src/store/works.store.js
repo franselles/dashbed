@@ -190,6 +190,25 @@ export default {
       }
     },
 
+    async deleteItems(context, payload) {
+      try {
+        const data = await Vue.axios({
+          method: 'delete',
+          url: 'items',
+          params: {
+            cityID: payload.cityID,
+            beachID: payload.beachID,
+            sectorID: payload.sectorID,
+          },
+        });
+        if (data.data) {
+          return data.data;
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    },
+
     async getSectors({ commit }, payload) {
       try {
         const data = await Vue.axios({

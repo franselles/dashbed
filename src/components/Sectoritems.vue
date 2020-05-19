@@ -33,8 +33,13 @@
       </div>
     </div>
     <b-field>
-      <b-button type="is-danger" @click="updateItem()"
+      <b-button type="is-success" @click="updateItem()"
         >ACTUALIZAR ITEMS</b-button
+      >
+    </b-field>
+    <b-field>
+      <b-button type="is-danger" @click="deleteItemsButton"
+        >BORRAR ITEMS</b-button
       >
     </b-field>
   </div>
@@ -52,7 +57,12 @@ export default {
   },
 
   methods: {
-    ...mapActions('worksStore', ['getSector', 'getItems', 'putItems']),
+    ...mapActions('worksStore', [
+      'getSector',
+      'getItems',
+      'putItems',
+      'deleteItems',
+    ]),
 
     getSectorLocal() {
       this.statusSector = [];
@@ -83,16 +93,31 @@ export default {
       });
     },
 
-    updateItem() {
+    async updateItem() {
       let updatedItemsToSend = [];
+      let step = 8;
 
       for (let i = 0; i < this.statusSector.length; i++) {
         for (let e = 0; e < this.statusSector[i].length; e++) {
           updatedItemsToSend.push(this.statusSector[i][e]);
         }
+        if (i == step) {
+          await this.putItems(updatedItemsToSend);
+          step += 8;
+          updatedItemsToSend = [];
+        }
       }
+      await this.putItems(updatedItemsToSend);
 
-      this.putItems(updatedItemsToSend).then(() => {
+      this.getSectorLocal();
+    },
+
+    deleteItemsButton() {
+      this.deleteItems({
+        cityID: this.cityLocal.cityID,
+        beachID: this.beachLocal.beachID,
+        sectorID: this.sectorLocal.sectorID,
+      }).then(() => {
         this.getSectorLocal();
       });
     },
