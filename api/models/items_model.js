@@ -19,6 +19,7 @@ const itemsSchema = new Schema(
     row: { type: Number },
     filled: { type: Number },
     empty: { type: Number },
+    numberItem: { type: Number },
   },
   { collection: 'items' }
 );

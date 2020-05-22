@@ -47,6 +47,7 @@ async function getCarts(querystring) {
         col: '$detail.col',
         row: '$detail.row',
         price: '$detail.price',
+        numberItem: '$detail.numberItem',
       },
     },
   ]).exec();
@@ -114,6 +115,7 @@ function getStock(req, res) {
           price: '$detail.price',
           filled: '$detail.filled',
           empty: '$detail.empty',
+          numberItem: '$detail.numberItem',
         },
       },
     ]).exec((err, doc) => {

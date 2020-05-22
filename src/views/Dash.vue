@@ -14,6 +14,9 @@
           RESERVAS
         </b-navbar-item>
         <b-navbar-dropdown label="DISEÑO">
+          <b-navbar-item tag="router-link" :to="{ path: '/sectoredit' }">
+            EDITAR SECTOR SECTOR
+          </b-navbar-item>
           <b-navbar-item tag="router-link" :to="{ path: '/editor' }">
             DISEÑO SECTOR
           </b-navbar-item>

@@ -66,6 +66,7 @@
 
       <div class="column">
         <Sectoritems ref="sectoritems" />
+        <Itemdetail ref="itemdetail" />
       </div>
     </div>
   </div>
@@ -75,10 +76,11 @@
 import { mapActions, mapState, mapMutations } from 'vuex';
 import Sectoritems from '@/components/Sectoritems.vue';
 import Sectordetail from '@/components/Sectordetail.vue';
+import Itemdetail from '@/components/Itemdetail.vue';
 
 export default {
   name: 'editor',
-  components: { Sectoritems, Sectordetail },
+  components: { Sectoritems, Sectordetail, Itemdetail },
   data() {
     return {
       statusSector: [],

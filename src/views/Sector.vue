@@ -300,6 +300,7 @@ export default {
             row: e.row,
             price: e.price,
             codeID: null,
+            numbetItem: e.numbetItem,
           });
         } else {
           this.cartLocal.detail.push({
@@ -317,6 +318,7 @@ export default {
             row: e.row,
             price: e.price,
             codeID: null,
+            numbetItem: e.numbetItem,
           });
         }
       }

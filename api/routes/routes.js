@@ -56,7 +56,9 @@ api.get('/item', itemsControl.getItem);
 api.put('/item', itemsControl.putItem);
 api.put('/items', itemsControl.putItems);
 api.delete('/items', itemsControl.deleteItems);
+api.delete('/item', itemsControl.deleteItem);
 api.post('/items', itemsControl.postItems);
+api.post('/item', itemsControl.postItem);
 
 //  Users check, token and cookie
 // api.post('/login', usersControl.postUsersToken);

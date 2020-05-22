@@ -57,6 +57,12 @@ export default [
         component: () => import('@/views/Createitems.vue'),
         meta: { requiresAuth: true },
       },
+      {
+        path: '/sectoredit',
+        name: 'sectoredit',
+        component: () => import('@/views/Sectoredit.vue'),
+        meta: { requiresAuth: true },
+      },
     ],
   },
 ];

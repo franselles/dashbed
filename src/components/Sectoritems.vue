@@ -23,7 +23,7 @@
                     size="is-small"
                     type="is-success"
                     @click="pushed(cell)"
-                    >{{ cell.row }}.{{ cell.col }}</b-button
+                    >{{ cell.numberItem }}</b-button
                   >
                 </div>
               </td>
@@ -42,11 +42,16 @@
         >BORRAR ITEMS</b-button
       >
     </b-field>
+    <b-field>
+      <b-button type="is-primary" @click="reNumberItems"
+        >RENUMERA ITEMS</b-button
+      >
+    </b-field>
   </div>
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex';
+import { mapState, mapActions, mapMutations } from 'vuex';
 
 export default {
   name: 'sectoritems',
@@ -63,6 +68,7 @@ export default {
       'putItems',
       'deleteItems',
     ]),
+    ...mapMutations('worksStore', ['setItemToEdit']),
 
     getSectorLocal() {
       this.statusSector = [];
@@ -91,6 +97,19 @@ export default {
           }
         }
       });
+    },
+
+    reNumberItems() {
+      let numberItem = 1;
+
+      for (let i = 0; i < this.statusSector.length; i++) {
+        for (let e = 0; e < this.statusSector[i].length; e++) {
+          if (this.statusSector[i][e].empty === 0) {
+            this.statusSector[i][e].numberItem = numberItem;
+            numberItem++;
+          }
+        }
+      }
     },
 
     async updateItem() {
@@ -130,6 +149,7 @@ export default {
         state = 0;
       }
       this.statusSector[e.col - 1][e.row - 1].empty = state;
+      this.setItemToEdit(this.statusSector[e.col - 1][e.row - 1]);
       // e.empty = state;
       // this.updateItem(e);
     },

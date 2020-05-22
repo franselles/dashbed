@@ -18,6 +18,7 @@ const detailSchema = new Schema({
   row: { type: Number },
   price: { type: Number },
   codeID: { type: String, uppercase: true },
+  numberItem: { type: Number },
 });
 
 const cartsSchema = new Schema(

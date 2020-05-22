@@ -13,4 +13,5 @@ module.exports = {
       skipWaiting: true,
     },
   },
+  productionSourceMap: false,
 };

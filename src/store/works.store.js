@@ -13,6 +13,7 @@ export default {
     sectorActual: null,
     sectorIDActual: 1,
     typeIDActual: 9,
+    itemToEdit: null,
   },
   mutations: {
     setStateSector(state, payload) {
@@ -72,6 +73,9 @@ export default {
     resetTypeIDActual(state) {
       state.typeIDActual = null;
     },
+    setItemToEdit(state, payload) {
+      state.itemToEdit = payload;
+    },
   },
   actions: {
     async postItems(context, payload) {
@@ -89,12 +93,44 @@ export default {
       }
     },
 
+    async postItem(context, payload) {
+      try {
+        const data = await Vue.axios({
+          method: 'post',
+          url: 'item',
+          data: payload,
+        });
+        if (data) {
+          return true;
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    },
+
     async putItem(context, payload) {
       try {
         const data = await Vue.axios({
           method: 'put',
           url: 'item',
           data: payload,
+          params: {
+            id: payload._id,
+          },
+        });
+        if (data.data) {
+          return data.data;
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    },
+
+    async deleteItem(context, payload) {
+      try {
+        const data = await Vue.axios({
+          method: 'delete',
+          url: 'item',
           params: {
             id: payload._id,
           },
