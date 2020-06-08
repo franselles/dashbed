@@ -102,8 +102,9 @@ export default {
     reNumberItems() {
       let numberItem = 1;
 
-      for (let i = 0; i < this.statusSector.length; i++) {
-        for (let e = 0; e < this.statusSector[i].length; e++) {
+      // for (let i = 0; i < this.statusSector.length; i++) {
+      for (let e = 0; e < this.statusSector[0].length; e++) {
+        for (let i = 0; i < this.statusSector.length; i++) {
           if (this.statusSector[i][e].empty === 0) {
             this.statusSector[i][e].numberItem = numberItem;
             numberItem++;
