@@ -17,6 +17,11 @@ function getCities(req, res) {
   });
 }
 
+function redireccion(req, res) {
+  res.redirect('localhost:8081/#/select');
+}
+
 module.exports = {
   getCities,
+  redireccion,
 };

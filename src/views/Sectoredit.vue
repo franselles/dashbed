@@ -103,6 +103,14 @@
         >INSERTA NUEVO SECTOR</b-button
       >
     </b-field>
+
+    <b-field>
+      <div class="buttons">
+        <b-button type="is-danger" expanded @click="redireccion"
+          >REDIRECCION</b-button
+        >
+      </div>
+    </b-field>
   </div>
 </template>
 
@@ -150,6 +158,13 @@ export default {
 
   methods: {
     ...mapActions('worksStore', ['getCities', 'getBeaches', 'getSectors']),
+
+    redireccion() {
+      this.axios({
+        method: 'get',
+        url: 'redireccion',
+      });
+    },
 
     async selectCity(e) {
       this.sectorLocal.city = this.cities[e.target.selectedIndex].city;

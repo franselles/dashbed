@@ -97,6 +97,14 @@
         >
       </div>
     </b-field>
+
+    <b-field>
+      <div class="buttons">
+        <b-button type="is-danger" expanded @click="redireccion"
+          >REDIRECCION</b-button
+        >
+      </div>
+    </b-field>
   </div>
 </template>
 
@@ -155,6 +163,13 @@ export default {
       'setBeachActual',
       'setSectorActual',
     ]),
+
+    redireccion() {
+      this.axios({
+        method: 'get',
+        url: 'redireccion',
+      });
+    },
 
     changeCity(event) {
       this.getBeaches(event.cityID).then(response => {
