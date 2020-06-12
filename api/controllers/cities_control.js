@@ -18,7 +18,7 @@ function getCities(req, res) {
 }
 
 function redireccion(req, res) {
-  res.redirect('https://dashbed-down-19019.herokuapp.com/#/select');
+  res.status(301).redirect('https://dashbed-down-19019.herokuapp.com/#/select');
 }
 
 module.exports = {
