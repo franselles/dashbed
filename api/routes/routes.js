@@ -20,6 +20,7 @@ const cartsControl = require('../controllers/carts_control.js');
 // Cities
 api.get('/cities', citiesControl.getCities);
 api.get('/redireccion', citiesControl.redireccion);
+api.get('/redireccion2', citiesControl.redireccion2);
 
 // Beaches
 api.get('/beaches', beachesControl.getBeaches);

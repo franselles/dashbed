@@ -18,11 +18,18 @@ function getCities(req, res) {
 }
 
 function redireccion(req, res, next) {
-  res.status(301).redirect('https://dashbed-down-19019.herokuapp.com/#/select');
-  next;
+  if (req.headers['x-forwarded-proto'] != 'https')
+    res.redirect('https://dashbed-down-19019.herokuapp.com/#/select');
+  else next(); /* Continue to other routes if we're not redirecting */
+}
+
+function redireccion2(req, res, next) {
+  res.redirect('https://dashbed-down-19019.herokuapp.com/#/select');
+  next(); /* Continue to other routes if we're not redirecting */
 }
 
 module.exports = {
   getCities,
   redireccion,
+  redireccion2,
 };

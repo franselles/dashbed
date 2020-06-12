@@ -111,6 +111,13 @@
         >
       </div>
     </b-field>
+    <b-field>
+      <div class="buttons">
+        <b-button type="is-danger" expanded @click="redireccion2"
+          >REDIRECCION2</b-button
+        >
+      </div>
+    </b-field>
   </div>
 </template>
 
@@ -163,6 +170,13 @@ export default {
       this.axios({
         method: 'get',
         url: 'redireccion',
+      });
+    },
+
+    redireccion2() {
+      this.axios({
+        method: 'get',
+        url: 'redireccion2',
       });
     },
 
