@@ -17,8 +17,9 @@ function getCities(req, res) {
   });
 }
 
-function redireccion(req, res) {
+function redireccion(req, res, next) {
   res.status(301).redirect('https://dashbed-down-19019.herokuapp.com/#/select');
+  next;
 }
 
 module.exports = {
